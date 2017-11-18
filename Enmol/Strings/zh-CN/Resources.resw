@@ -123,6 +123,9 @@
   <data name="AppName.Text" xml:space="preserve">
     <value>以沫</value>
   </data>
+  <data name="EmailAndTelephone.Text" xml:space="preserve">
+    <value>手机或邮箱</value>
+  </data>
   <data name="HelloWord" xml:space="preserve">
     <value>你好</value>
   </data>

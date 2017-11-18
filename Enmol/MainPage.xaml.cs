@@ -26,32 +26,31 @@ namespace Enmol
         public MainPage()
         {
             this.InitializeComponent();
-
             MyInit();
-
-
-
         }
 
         private void MyInit()
         {
-            FillBackground(MainBackgroundGrid);
+            FillBackground(UserInfoGridBackground);
         }
 
         private void FillBackground(Grid grid)
         {
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.XamlCompositionBrushBase"))
             {
-                Windows.UI.Xaml.Media.AcrylicBrush myBrush = new Windows.UI.Xaml.Media.AcrylicBrush();
-                myBrush.BackgroundSource = Windows.UI.Xaml.Media.AcrylicBackgroundSource.HostBackdrop;
-                myBrush.TintColor = Color.FromArgb(255, 0, 99, 153);
-                myBrush.FallbackColor = Color.FromArgb(255, 0, 99, 153);
-                myBrush.TintOpacity = 0.6;
+                AcrylicBrush myBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.Backdrop,
+                    //myBrush.BackgroundSource = Windows.UI.Xaml.Media.AcrylicBackgroundSource.HostBackdrop;
+                    TintColor = Color.FromArgb(255, 255, 255, 255),//亚克力颜色
+                    FallbackColor = Color.FromArgb(255, 255, 255, 255),//失去焦点的时候的颜色
+                    TintOpacity = 0.6//模糊度
+                };
                 grid.Background = myBrush;
             }
             else
             {
-                SolidColorBrush myBrush = new SolidColorBrush(Color.FromArgb(255, 0, 99, 153));
+                SolidColorBrush myBrush = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
                 grid.Background = myBrush;
             }
         }

@@ -30,6 +30,10 @@
           <source>密码</source>
           <target state="new">密码</target>
         </trans-unit>
+        <trans-unit id="EmailAndTelephone.Text" translate="yes" xml:space="preserve">
+          <source>手机或邮箱</source>
+          <target state="new">手机或邮箱</target>
+        </trans-unit>
       </group>
     </body>
   </file>
