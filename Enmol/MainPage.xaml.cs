@@ -31,7 +31,13 @@ namespace Enmol
 
         private void MyInit()
         {
-            FillBackground(UserInfoGridBackground);
+            FillBackground(UserInfoGridBackground);//填充亚克力玻璃
+            ShowVersion();//显示版本号
+        }
+
+        private void ShowVersion()
+        {
+            VersionTextBlock.Text = BLL.Tools.GetVersion();
         }
 
         private void FillBackground(Grid grid)

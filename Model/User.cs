@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL
+namespace Model
 {
-    public class Class1
+    public class User
     {
+        private String UserName;
+        private String UserPassword;
+        private int UserID;
     }
 }

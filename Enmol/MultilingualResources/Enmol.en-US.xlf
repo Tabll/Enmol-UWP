@@ -34,6 +34,10 @@
           <source>手机或邮箱</source>
           <target state="new">手机或邮箱</target>
         </trans-unit>
+        <trans-unit id="AppVersion.Text" translate="yes" xml:space="preserve">
+          <source>版本</source>
+          <target state="new">版本</target>
+        </trans-unit>
       </group>
     </body>
   </file>
