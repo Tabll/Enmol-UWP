@@ -7,9 +7,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace Enmol.Tools
 {
-    class Dialog : IDialog
+    class Dialog
     {
-        public async void ShowSimpleDialog(string title, string content)
+        public static async void ShowSimpleDialog(string title, string content)
         {
             ContentDialog myDialog = new ContentDialog()
             {
@@ -18,7 +18,17 @@ namespace Enmol.Tools
                 PrimaryButtonText = "好的"
             };
             ContentDialogResult thisResult = await myDialog.ShowAsync();
-            //throw new NotImplementedException();
+        }
+
+        public static async void ShowTestDialog()
+        {
+            ContentDialog myDialog = new ContentDialog()
+            {
+                Title = "测试",
+                Content = "这是一个测试框",
+                PrimaryButtonText = "好的"
+            };
+            ContentDialogResult thisResult = await myDialog.ShowAsync();
         }
     }
 }

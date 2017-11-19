@@ -60,5 +60,41 @@ namespace Enmol
                 grid.Background = myBrush;
             }
         }
+
+        private void Next_PointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            if (UserNameTextBox.Text == "")
+            {
+                Tools.Dialog.ShowSimpleDialog("提示", "用户名不能为空");
+            }
+            else
+            {
+                Next();
+            }
+        }
+
+        private void Page_PreviewKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key.ToString() == "Enter")
+            {
+                if (UserPasswordBox.Password != "" && UserNameTextBox.Text != "")
+                {
+                    Next();
+                }
+            }
+        }
+
+        private void Next()
+        {
+            if (BLL.Check.CheckUserWordAndPasswordEnter(UserNameTextBox.Text, UserPasswordBox.Password))
+            {
+                Tools.Dialog.ShowTestDialog();
+            }
+            else
+            {
+                Tools.Dialog.ShowSimpleDialog("提示", "错误的用户名格式");
+            }
+            
+        }
     }
 }
