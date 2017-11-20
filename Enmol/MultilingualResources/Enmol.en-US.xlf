@@ -38,6 +38,22 @@
           <source>版本</source>
           <target state="new">版本</target>
         </trans-unit>
+        <trans-unit id="ForgetPassword.Text" translate="yes" xml:space="preserve">
+          <source>忘记密码</source>
+          <target state="new">忘记密码</target>
+        </trans-unit>
+        <trans-unit id="SignIn.Text" translate="yes" xml:space="preserve">
+          <source>登陆</source>
+          <target state="new">登陆</target>
+        </trans-unit>
+        <trans-unit id="SignUp.Text" translate="yes" xml:space="preserve">
+          <source>注册账号</source>
+          <target state="new">注册账号</target>
+        </trans-unit>
+        <trans-unit id="Back.Text" translate="yes" xml:space="preserve">
+          <source>返回</source>
+          <target state="new">返回</target>
+        </trans-unit>
       </group>
     </body>
   </file>

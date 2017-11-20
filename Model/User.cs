@@ -8,8 +8,46 @@ namespace Model
 {
     public class User
     {
-        private String UserName;
-        private String UserPassword;
-        private int UserID;
+        private string UserName;
+        private string UserPassword;
+        private string UserTelephone;
+        private string UserEmail;
+        private string UserID;
+        private string RelationshipUserID;
+
+        User()
+        {
+            
+        }
+
+        public string GetUserID()
+        {
+            return UserID;
+        }
+
+        public string GetRelationshipUserID()
+        {
+            return RelationshipUserID;
+        }
+
+        public string GetUserName()
+        {
+            return UserName;
+        }
+
+        public string GetUserPassword()
+        {
+            return UserPassword;
+        }
+
+        public string GetUserTelephone()
+        {
+            return UserTelephone;
+        }
+
+        public string GetUserEmail()
+        {
+            return UserEmail;
+        }
     }
 }

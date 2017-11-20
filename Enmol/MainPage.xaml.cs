@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
@@ -27,6 +28,18 @@ namespace Enmol
         {
             this.InitializeComponent();
             MyInit();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            ConnectedAnimation imageAnimation =
+                ConnectedAnimationService.GetForCurrentView().GetAnimation("BackToMain");
+            if (imageAnimation != null)
+            {
+                imageAnimation.TryStart(UserInfoGridBackground);
+            }
         }
 
         private void MyInit()
@@ -95,6 +108,44 @@ namespace Enmol
                 Tools.Dialog.ShowSimpleDialog("提示", "错误的用户名格式");
             }
             
+        }
+
+        private void TextBlock_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+            switch (textBlock.Name)
+            {
+                case "SignUpTextBlock":
+                    JumpToSignUpPage();
+                    break;
+                case "ForgetPasswordTextBlock":
+                    Tools.Dialog.ShowSimpleDialog("提示", textBlock.Name);
+                    break;
+                case "VersionTextBlock":
+                    Tools.Dialog.ShowSimpleDialog("提示", textBlock.Name);
+                    break;
+                default:
+                    Tools.Dialog.ShowSimpleDialog("警告", "程序出了问题");
+                    break;
+            }
+        }
+
+        private void TextBlock_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+            textBlock.Foreground = new SolidColorBrush(Color.FromArgb(255, 113, 97, 82));
+        }
+
+        private void TextBlock_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+            textBlock.Foreground = new SolidColorBrush(Colors.White);
+        }
+
+        private void JumpToSignUpPage()
+        {
+            ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("image", UserInfoGridBackground);
+            Frame.Navigate(typeof(Views.SignUp));
         }
     }
 }

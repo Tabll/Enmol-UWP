@@ -126,14 +126,26 @@
   <data name="AppVersion.Text" xml:space="preserve">
     <value>版本</value>
   </data>
+  <data name="Back.Text" xml:space="preserve">
+    <value>返回</value>
+  </data>
   <data name="EmailAndTelephone.Text" xml:space="preserve">
     <value>手机或邮箱</value>
+  </data>
+  <data name="ForgetPassword.Text" xml:space="preserve">
+    <value>忘记密码</value>
   </data>
   <data name="HelloWord" xml:space="preserve">
     <value>你好</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>设置</value>
+  </data>
+  <data name="SignIn.Text" xml:space="preserve">
+    <value>登陆</value>
+  </data>
+  <data name="SignUp.Text" xml:space="preserve">
+    <value>注册账号</value>
   </data>
   <data name="UserName.Text" xml:space="preserve">
     <value>用户名</value>
