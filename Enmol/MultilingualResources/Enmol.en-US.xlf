@@ -54,6 +54,22 @@
           <source>返回</source>
           <target state="new">返回</target>
         </trans-unit>
+        <trans-unit id="Retry.Text" translate="yes" xml:space="preserve">
+          <source>重试</source>
+          <target state="new">重试</target>
+        </trans-unit>
+        <trans-unit id="TelephoneNumber.Text" translate="yes" xml:space="preserve">
+          <source>手机号</source>
+          <target state="new">手机号</target>
+        </trans-unit>
+        <trans-unit id="VertifyCode.Text" translate="yes" xml:space="preserve">
+          <source>验证码</source>
+          <target state="new">验证码</target>
+        </trans-unit>
+        <trans-unit id="SendVertifyCode.Text" translate="yes" xml:space="preserve">
+          <source>发送验证码</source>
+          <target state="new">发送验证码</target>
+        </trans-unit>
       </group>
     </body>
   </file>

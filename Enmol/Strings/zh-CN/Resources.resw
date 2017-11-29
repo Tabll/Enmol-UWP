@@ -138,6 +138,12 @@
   <data name="HelloWord" xml:space="preserve">
     <value>你好</value>
   </data>
+  <data name="Retry.Text" xml:space="preserve">
+    <value>重试</value>
+  </data>
+  <data name="SendVertifyCode.Text" xml:space="preserve">
+    <value>发送验证码</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>设置</value>
   </data>
@@ -147,10 +153,16 @@
   <data name="SignUp.Text" xml:space="preserve">
     <value>注册账号</value>
   </data>
+  <data name="TelephoneNumber.Text" xml:space="preserve">
+    <value>手机号</value>
+  </data>
   <data name="UserName.Text" xml:space="preserve">
     <value>用户名</value>
   </data>
   <data name="UserPassword.Text" xml:space="preserve">
     <value>密码</value>
+  </data>
+  <data name="VertifyCode.Text" xml:space="preserve">
+    <value>验证码</value>
   </data>
 </root>

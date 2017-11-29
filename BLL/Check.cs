@@ -13,15 +13,19 @@ namespace BLL
         {
             Regex emailRegular = new Regex("^\\s*([A-Za-z0-9_-]+(\\.\\w+)*@(\\w+\\.)+\\w{2,5})\\s*$");
             Regex phoneNumberRegular = new Regex("^\\d{11}$");
+            return (emailRegular.IsMatch(UserName) || phoneNumberRegular.IsMatch(UserName));
+        }
 
-            if (emailRegular.IsMatch(UserName) || phoneNumberRegular.IsMatch(UserName))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+        public static bool CheckPhoneNumber(string PhoneNumber)
+        {
+            Regex phoneNumberRegular = new Regex("^\\d{11}$");
+            return phoneNumberRegular.IsMatch(PhoneNumber);
+        }
+
+        public static bool CheckEmailName(string EmailName)
+        {
+            Regex emailRegular = new Regex("^\\s*([A-Za-z0-9_-]+(\\.\\w+)*@(\\w+\\.)+\\w{2,5})\\s*$");
+            return emailRegular.IsMatch(EmailName);
         }
     }
 }
