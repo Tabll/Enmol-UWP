@@ -165,4 +165,7 @@
   <data name="VertifyCode.Text" xml:space="preserve">
     <value>验证码</value>
   </data>
+  <data name="Yes.Text" xml:space="preserve">
+    <value>嗯</value>
+  </data>
 </root>

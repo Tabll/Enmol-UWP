@@ -97,11 +97,45 @@ namespace Enmol
             }
         }
 
-        private void Next()
+        private async void Next()
         {
             if (BLL.Check.CheckUserWordAndPasswordEnter(UserNameTextBox.Text, UserPasswordBox.Password))
             {
-                Tools.Dialog.ShowTestDialog();
+                BLL.LocalSettings localSettings = new BLL.LocalSettings();
+                BLL.PostMessages signInMessage = new BLL.PostMessages();
+                
+                localSettings.SaveLocalSettings("Phone", UserNameTextBox.Text);
+                localSettings.SaveLocalSettings("Password", UserPasswordBox.Password);
+                
+                if (localSettings.IsSetLocalSettings("Token"))
+                {
+                    signInMessage.AddPostInfomation("sign-in-state", "2");
+                    signInMessage.AddPostInfomation("token", localSettings.GetLocalSettings("Token"));
+                    signInMessage.AddPostInfomation("user-password", UserPasswordBox.Password);
+                }
+                else
+                {
+                    signInMessage.AddPostInfomation("sign-in-state", "1");
+                    signInMessage.AddPostInfomation("user-password", UserPasswordBox.Password);
+                }
+                signInMessage.AddPostInfomation("user-phone-number", UserNameTextBox.Text);
+                signInMessage.SetUri("signin.php");
+                signInMessage.AddPostHeader("user", "uwp-user");
+                string result = await signInMessage.SendMessages();
+                BLL.JsonTools jsonObject = new BLL.JsonTools(result);
+
+                if(jsonObject.GetJson("State") == "SUCCESS")
+                {
+                    if(jsonObject.GetJson("NeedUpdate") == "TRUE")
+                    {
+                        localSettings.SaveLocalSettings("Token", jsonObject.GetJson("Token"));
+                    }
+                    Tools.Dialog.ShowSimpleDialog("提示", jsonObject.GetJson("State"));
+                }
+                else
+                {
+                    Tools.Dialog.ShowSimpleDialog("提示", jsonObject.GetJson("WARNING"));
+                }
             }
             else
             {
@@ -119,7 +153,8 @@ namespace Enmol
                     JumpToSignUpPage();
                     break;
                 case "ForgetPasswordTextBlock":
-                    Tools.Dialog.ShowSimpleDialog("提示", textBlock.Name);
+                    JumpToSignUpPage();
+                    //Tools.Dialog.ShowSimpleDialog("提示", textBlock.Name);
                     break;
                 case "VersionTextBlock":
                     Tools.Dialog.ShowSimpleDialog("提示", textBlock.Name);

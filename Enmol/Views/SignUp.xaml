@@ -63,7 +63,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock x:Uid="VertifyCode" Grid.Column="0" VerticalAlignment="Center" Margin="20,0,10,0"/>
                     <TextBox x:Name="VertifyCodeBox" Margin="10,6,10,6" Grid.Column="1" VerticalAlignment="Center" PlaceholderText="Vertify Code" BorderThickness="1"/>
-                    <Button x:Name="GetVertifyCodeButton" Grid.Column="2" Width="95" Content="获取验证码" Margin="10,6,10,6" Click="GetVertifyCodeButton_Click"/>
+                    <Button Style="{StaticResource ButtonRevealStyle}" BorderThickness="1" x:Name="GetVertifyCodeButton" Grid.Column="2" Width="95" Content="获取验证码" Margin="10,6,10,6" Click="GetVertifyCodeButton_Click"/>
                 </Grid>
 
                 <!--按钮-->

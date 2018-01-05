@@ -68,7 +68,9 @@ namespace Enmol.Views
         private void BackTextBlock_PointerReleased(object sender, PointerRoutedEventArgs e)
         {
             ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("BackToMain", UserInfoGridBackground);
-            Frame.Navigate(typeof(MainPage));
+            //Frame.Navigate(typeof(MainPage));
+
+            Frame.GoBack();
         }
 
         private void GetVertifyCodeButton_Click(object sender, RoutedEventArgs e)
@@ -77,7 +79,7 @@ namespace Enmol.Views
             {
                 GetVertifyCodeButton.IsEnabled = false;
                 TelephoneNumberTextBox.IsEnabled = false;
-                GetVertifyCode();
+                GetVertifyCode();//暂时停止发送短信的功能
                 SetTime();
             }
             else
@@ -130,7 +132,45 @@ namespace Enmol.Views
 
         private void NextImage_PointerReleased(object sender, PointerRoutedEventArgs e)
         {
+            if (TelephoneNumberTextBox.IsEnabled)
+            {
+                Tools.Dialog.ShowSimpleDialog("提示", "请输入正确的手机号和验证码");
+            }
+            else
+            {
+                if(VertifyCodeBox.Text == "")
+                {
+                    Tools.Dialog.ShowSimpleDialog("提示", "请填写验证码");
+                }
+                else
+                {
+                    VerifyCode();
+                    
+                }
+            }
+        }
 
+        private async void VerifyCode()
+        {
+            BLL.PostMessages verifyCodeMessage = new BLL.PostMessages();
+            verifyCodeMessage.AddPostInfomation("sign-up-state", "2");
+            verifyCodeMessage.AddPostInfomation("user-phone-number", TelephoneNumberTextBox.Text);
+            verifyCodeMessage.AddPostInfomation("user-verify-code", VertifyCodeBox.Text);
+            verifyCodeMessage.SetUri("signup.php");
+            verifyCodeMessage.AddPostHeader("user", "uwp-user");
+            string result = await verifyCodeMessage.SendMessages();
+            if (result == "success")
+            {
+                SetPassword.SetVerifyCode(VertifyCodeBox.Text);
+                SetPassword.SetPhoneNumber(TelephoneNumberTextBox.Text);
+
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("image", UserInfoGridBackground);
+                Frame.Navigate(typeof(SetPassword));
+            }
+            else
+            {
+                Tools.Dialog.ShowSimpleDialog("提示", "验证失败");
+            }
         }
     }
 }
