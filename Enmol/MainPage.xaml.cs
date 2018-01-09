@@ -130,7 +130,8 @@ namespace Enmol
                     {
                         localSettings.SaveLocalSettings("Token", jsonObject.GetJson("Token"));
                     }
-                    Tools.Dialog.ShowSimpleDialog("提示", jsonObject.GetJson("State"));
+                    Frame.Navigate(typeof(Contents.Calender));
+                    //Tools.Dialog.ShowSimpleDialog("提示", jsonObject.GetJson("State"));
                 }
                 else
                 {
