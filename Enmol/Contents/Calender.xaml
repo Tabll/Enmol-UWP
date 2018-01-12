@@ -89,8 +89,6 @@
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <NavigationView Style="{StaticResource NavigationViewStyle}" x:Name="calenderNavigationView"
-                        Header="123"
-                        
                         AlwaysShowHeader="False"
                         Background="Transparent">
             <NavigationView.MenuItems>

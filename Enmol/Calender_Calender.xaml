@@ -17,17 +17,268 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0" Margin="0,30,0,0">
-                <Ellipse Fill="Firebrick" Width="50" Height="50" Margin="0,0,50,0" HorizontalAlignment="Right"/>
+                <Ellipse Fill="{ThemeResource SystemControlAccentDark1AcrylicWindowAccentDark1Brush}" Width="50" Height="50" Margin="0,0,50,0" HorizontalAlignment="Right"/>
                 <TextBlock Text="可乐" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,120,25" FontSize="18" FontWeight="Bold"/>
                 <TextBlock Text="两个黄鹂鸣翠柳，一池疏影落寒花" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,120,-25"/>
+                <Button Style="{StaticResource ButtonRevealStyle}" Content="&gt;" Background="White" VerticalAlignment="Bottom" BorderThickness="1" Width="42" Margin="42,0,0,0"/>
+                <Button Style="{StaticResource ButtonRevealStyle}" Content="&lt;" Background="White" VerticalAlignment="Bottom" BorderThickness="1" Width="42" Margin="0"/>
+                <Grid VerticalAlignment="Bottom" Background="{ThemeResource SystemControlAccentDark1AcrylicWindowAccentDark1Brush}" CornerRadius="6,6,0,0" Margin="84,0,0,0" Height="30" HorizontalAlignment="Left">
+                    <TextBlock x:Name="TimeTextBlock" Text="2018年1月10日  十一月廿四  10:32:23" Foreground="White" VerticalAlignment="Center" Margin="7,0,7,0"/>
+                </Grid>
+                
             </Grid>
 
-            <Grid Grid.Row="1" Background="Red">
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="7"/>
+                    <RowDefinition Height="4"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1" BorderBrush="#33808080" BorderThickness="1,1,0.5,0">
+                    <TextBlock Text="星期日" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="2" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
+                    <TextBlock Text="星期一" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="3" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
+                    <TextBlock Text="星期二" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="4" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
+                    <TextBlock Text="星期三" Foreground="{ThemeResource SystemControlAccentDark1AcrylicWindowAccentDark1Brush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="5" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
+                    <TextBlock Text="星期四" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="6" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
+                    <TextBlock Text="星期五" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="7" BorderBrush="#33808080" BorderThickness="0.5,1,1,0">
+                    <TextBlock Text="星期六" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
 
+                <Grid Grid.Column="1" Grid.Row="1" BorderBrush="#33808080" BorderThickness="1,1,0.5,0">
+                    <TextBlock Text="7" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Text="廿一" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
+                </Grid>
+                <Grid Grid.Column="2" Grid.Row="1" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
+                    <TextBlock Text="8" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Text="廿二" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
+                </Grid>
+                <Grid Grid.Column="3" Grid.Row="1" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
+                    <TextBlock Text="9" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Text="廿三" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
+                </Grid>
+                <Grid Grid.Column="4" Grid.Row="1" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
+                    <TextBlock Text="10" Foreground="{ThemeResource SystemControlAccentDark1AcrylicWindowAccentDark1Brush}" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Text="廿四" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
+                </Grid>
+                <Grid Grid.Column="5" Grid.Row="1" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
+                    <TextBlock Text="11" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Text="廿五" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
+                </Grid>
+                <Grid Grid.Column="6" Grid.Row="1" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
+                    <TextBlock Text="12" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Text="廿六" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
+                </Grid>
+                <Grid Grid.Column="7" Grid.Row="1" BorderBrush="#33808080" BorderThickness="0.5,1,1,0">
+                    <TextBlock Text="13" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Text="廿七" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
+                </Grid>
+
+                <Grid Grid.Column="1" Grid.Row="2" BorderBrush="#33808080" BorderThickness="1,0,0.5,0"/>
+                <Grid Grid.Column="2" Grid.Row="2" BorderBrush="#33808080" BorderThickness="0.5,0,0.5,0"/>
+                <Grid Grid.Column="3" Grid.Row="2" BorderBrush="#33808080" BorderThickness="0.5,0,0.5,0"/>
+                <Grid Grid.Column="4" Grid.Row="2" BorderBrush="#33808080" BorderThickness="0.5,0,0.5,0"/>
+                <Grid Grid.Column="5" Grid.Row="2" BorderBrush="#33808080" BorderThickness="0.5,0,0.5,0"/>
+                <Grid Grid.Column="6" Grid.Row="2" BorderBrush="#33808080" BorderThickness="0.5,0,0.5,0"/>
+                <Grid Grid.Column="7" Grid.Row="2" BorderBrush="#33808080" BorderThickness="0.5,0,1,0"/>
+                <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="3" BorderBrush="#33808080" BorderThickness="1"/>
+
+                <Grid Grid.Column="4" Grid.Row="3" Background="{ThemeResource SystemControlAccentDark1AcrylicWindowAccentDark1Brush}">
+
+                </Grid>
             </Grid>
 
-            <Grid Grid.Row="3" Background="Black">
+            <ScrollViewer Grid.Row="2">
+                <Grid Height="1440">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
+                    <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+                        <TextBlock Text="01:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
+                        <TextBlock Text="02:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="2" Grid.RowSpan="2">
+                        <TextBlock Text="03:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="3" Grid.RowSpan="2">
+                        <TextBlock Text="04:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="4" Grid.RowSpan="2">
+                        <TextBlock Text="05:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="5" Grid.RowSpan="2">
+                        <TextBlock Text="06:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="6" Grid.RowSpan="2">
+                        <TextBlock Text="07:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="7" Grid.RowSpan="2">
+                        <TextBlock Text="08:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="8" Grid.RowSpan="2">
+                        <TextBlock Text="09:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="9" Grid.RowSpan="2">
+                        <TextBlock Text="10:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="10" Grid.RowSpan="2">
+                        <TextBlock Text="11:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="11" Grid.RowSpan="2">
+                        <TextBlock Text="12:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="12" Grid.RowSpan="2">
+                        <TextBlock Text="13:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="13" Grid.RowSpan="2">
+                        <TextBlock Text="14:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="14" Grid.RowSpan="2">
+                        <TextBlock Text="15:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="15" Grid.RowSpan="2">
+                        <TextBlock Text="16:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="16" Grid.RowSpan="2">
+                        <TextBlock Text="17:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="17" Grid.RowSpan="2">
+                        <TextBlock Text="18:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="18" Grid.RowSpan="2">
+                        <TextBlock Text="19:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="19" Grid.RowSpan="2">
+                        <TextBlock Text="20:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="20" Grid.RowSpan="2">
+                        <TextBlock Text="21:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="21" Grid.RowSpan="2">
+                        <TextBlock Text="22:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="22" Grid.RowSpan="2">
+                        <TextBlock Text="23:00" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="24" BorderBrush="#33808080" BorderThickness="1,0,0.5,0"/>
+                    <Grid Grid.Column="2" Grid.Row="0" Grid.RowSpan="24" BorderBrush="#33808080" BorderThickness="0.5,0,0.5,0"/>
+                    <Grid Grid.Column="3" Grid.Row="0" Grid.RowSpan="24" BorderBrush="#33808080" BorderThickness="0.5,0,0.5,0"/>
+                    <Grid Grid.Column="4" Grid.Row="0" Grid.RowSpan="24" BorderBrush="#33808080" BorderThickness="0.5,0,0.5,0"/>
+                    <Grid Grid.Column="5" Grid.Row="0" Grid.RowSpan="24" BorderBrush="#33808080" BorderThickness="0.5,0,0.5,0"/>
+                    <Grid Grid.Column="6" Grid.Row="0" Grid.RowSpan="24" BorderBrush="#33808080" BorderThickness="0.5,0,0.5,0"/>
+                    <Grid Grid.Column="7" Grid.Row="0" Grid.RowSpan="24" BorderBrush="#33808080" BorderThickness="0.5,0,1,0"/>
+
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="0" BorderBrush="#33808080" BorderThickness="0,0,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="1" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="2" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="3" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="4" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="5" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="6" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="7" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="8" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="9" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="10" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="11" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="12" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="13" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="14" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="15" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="16" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="17" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="18" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="19" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="20" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="21" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="22" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="23" BorderBrush="#33808080" BorderThickness="0,0.5,0,0"/>
+                </Grid>
+            </ScrollViewer>
+            <Grid Grid.Row="3" Background="{ThemeResource SystemControlAccentDark1AcrylicElementAccentDark1Brush}">
+                <TextBlock Text="^" FontSize="25" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
         </Grid>
     </Grid>
