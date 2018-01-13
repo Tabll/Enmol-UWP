@@ -88,11 +88,13 @@
     </Page.Resources>
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <NavigationView Style="{StaticResource NavigationViewStyle}" x:Name="calenderNavigationView"
+        <NavigationView Style="{StaticResource NavigationViewStyle}"
+                        x:Name="calenderNavigationView"
                         AlwaysShowHeader="False"
+                        ItemInvoked="CalenderNavigationView_ItemInvoked"
                         Background="Transparent">
             <NavigationView.MenuItems>
-                <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="Add"  Content="添加日程" Tag="AddJob" Foreground="White"/>
+                <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="Add" Content="添加日程" Tag="AddJob" Foreground="White"/>
                 <NavigationViewItemSeparator/>
                 <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="Priority"  Content="时间轴" Tag="SamplePage2" Foreground="White" FocusVisualPrimaryBrush="White"/>
                 <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="Refresh" Content="计划" Tag="SamplePage3" Foreground="White" FocusVisualPrimaryBrush="White"/>

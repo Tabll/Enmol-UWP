@@ -25,8 +25,40 @@ namespace Enmol.Contents
         public Calender()
         {
             this.InitializeComponent();
-            //calenderNavigationView
             CalenderContentFrame.Navigate(typeof(Calender_Calender));
+        }
+
+        private void CalenderNavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            //var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+            if (args.IsSettingsInvoked)
+            {
+                //Tools.Dialog.ShowSimpleDialog("注意", "点击了设置");
+            }
+            else
+            {
+                switch (args.InvokedItem)
+                {
+                    case "添加日程":
+                        //Tools.Dialog.ShowSimpleDialog("注意", "点击了添加日程");
+                        var myPopup = new Views.AddSchedulePopupWindow("更改学生详细信息");
+                        //msgPopup.LeftClick += (s, e) => { Frame.Navigate(typeof(StudentChangePopupWindow)); };
+                        //msgPopup.LeftClick += (s, e) => { this.tb.Text = "您点击了：确定"; };
+                        //msgPopup.RightClick += (s, e) => { this.tb.Text = "您点击了：取消"; };
+                        myPopup.ShowWIndow();
+                        break;
+                    case "时间轴":
+                        Tools.Dialog.ShowSimpleDialog("Sorry", "功能正在开发中");
+                        break;
+                    case "计划":
+                        Tools.Dialog.ShowSimpleDialog("Sorry", "功能正在开发中");
+                        break;
+                    default:
+                        Tools.Dialog.ShowSimpleDialog("Sorry", "功能正在开发中~");
+                        break;
+                }
+            }
         }
     }
 }
