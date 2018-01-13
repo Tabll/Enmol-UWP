@@ -25,10 +25,9 @@
                 <Grid VerticalAlignment="Bottom" Background="{ThemeResource SystemControlAccentDark1AcrylicWindowAccentDark1Brush}" CornerRadius="6,6,0,0" Margin="84,0,0,0" Height="30" HorizontalAlignment="Left">
                     <TextBlock x:Name="TimeTextBlock" Text="2018年1月10日  十一月廿四  10:32:23" Foreground="White" VerticalAlignment="Center" Margin="7,0,7,0"/>
                 </Grid>
-                
             </Grid>
 
-            <Grid Grid.Row="1">
+            <Grid x:Name="weekTitleGrid" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>
                     <RowDefinition Height="*"/>
@@ -47,54 +46,54 @@
                     <ColumnDefinition Width="30"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="1" BorderBrush="#33808080" BorderThickness="1,1,0.5,0">
-                    <TextBlock Text="星期日" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="SUN" Text="星期日" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
                 <Grid Grid.Column="2" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
-                    <TextBlock Text="星期一" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="MON" Text="星期一" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
                 <Grid Grid.Column="3" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
-                    <TextBlock Text="星期二" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TUE" Text="星期二" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
                 <Grid Grid.Column="4" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
-                    <TextBlock Text="星期三" Foreground="{ThemeResource SystemControlAccentDark1AcrylicWindowAccentDark1Brush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="WED" Text="星期三" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
                 <Grid Grid.Column="5" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
-                    <TextBlock Text="星期四" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="THU" Text="星期四" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
                 <Grid Grid.Column="6" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
-                    <TextBlock Text="星期五" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="FRI" Text="星期五" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
                 <Grid Grid.Column="7" BorderBrush="#33808080" BorderThickness="0.5,1,1,0">
-                    <TextBlock Text="星期六" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="SAT" Text="星期六" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
 
                 <Grid Grid.Column="1" Grid.Row="1" BorderBrush="#33808080" BorderThickness="1,1,0.5,0">
-                    <TextBlock Text="7" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock Text="廿一" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
+                    <TextBlock x:Name="SUN_DAY" Text="6" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="SUN_CDAY" Text="廿一" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
                 </Grid>
                 <Grid Grid.Column="2" Grid.Row="1" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
-                    <TextBlock Text="8" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock Text="廿二" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
+                    <TextBlock x:Name="MON_DAY" Text="6" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="MON_CDAY" Text="廿二" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
                 </Grid>
                 <Grid Grid.Column="3" Grid.Row="1" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
-                    <TextBlock Text="9" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock Text="廿三" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
+                    <TextBlock x:Name="TUE_DAY" Text="6" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TUE_CDAY" Text="廿三" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
                 </Grid>
                 <Grid Grid.Column="4" Grid.Row="1" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
-                    <TextBlock Text="10" Foreground="{ThemeResource SystemControlAccentDark1AcrylicWindowAccentDark1Brush}" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock Text="廿四" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
+                    <TextBlock x:Name="WED_DAY" Text="6" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="WED_CDAY" Text="廿四" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
                 </Grid>
                 <Grid Grid.Column="5" Grid.Row="1" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
-                    <TextBlock Text="11" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock Text="廿五" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
+                    <TextBlock x:Name="THU_DAY" Text="6" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="THU_CDAY" Text="廿五" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
                 </Grid>
                 <Grid Grid.Column="6" Grid.Row="1" BorderBrush="#33808080" BorderThickness="0.5,1,0.5,0">
-                    <TextBlock Text="12" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock Text="廿六" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
+                    <TextBlock x:Name="FRI_DAY" Text="6" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="FRI_CDAY" Text="廿六" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
                 </Grid>
                 <Grid Grid.Column="7" Grid.Row="1" BorderBrush="#33808080" BorderThickness="0.5,1,1,0">
-                    <TextBlock Text="13" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock Text="廿七" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
+                    <TextBlock x:Name="SAT_DAY" Text="6" FontWeight="Black" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="SAT_CDAY" Text="廿七" VerticalAlignment="Bottom" FontSize="10" Foreground="Gray" HorizontalAlignment="Center" Margin="46,0,0,5"/>
                 </Grid>
 
                 <Grid Grid.Column="1" Grid.Row="2" BorderBrush="#33808080" BorderThickness="1,0,0.5,0"/>
@@ -105,10 +104,6 @@
                 <Grid Grid.Column="6" Grid.Row="2" BorderBrush="#33808080" BorderThickness="0.5,0,0.5,0"/>
                 <Grid Grid.Column="7" Grid.Row="2" BorderBrush="#33808080" BorderThickness="0.5,0,1,0"/>
                 <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="3" BorderBrush="#33808080" BorderThickness="1"/>
-
-                <Grid Grid.Column="4" Grid.Row="3" Background="{ThemeResource SystemControlAccentDark1AcrylicWindowAccentDark1Brush}">
-
-                </Grid>
             </Grid>
 
             <ScrollViewer Grid.Row="2">

@@ -129,5 +129,10 @@ namespace BLL
         {
             return dateTime.Year.ToString() + "年" + dateTime.Month.ToString() + "月" + dateTime.Day.ToString() + "日  " + GetChineseDateTime(dateTime) + "  " + dateTime.Hour + ":" + ((dateTime.Minute < 10) ? "0" : "") + dateTime.Minute + ":" + ((dateTime.Second < 10) ? "0" : "") + dateTime.Second;
         }
+
+        public static string GetChineseDate(DateTime datetime)
+        {
+            return GetLunisolarDay(ChineseCalendar.GetDayOfMonth(datetime));
+        }
     }
 }
