@@ -102,6 +102,7 @@
                     <CalendarView DisplayMode="Month"
                                   Height="290"
                                   BorderThickness="1"
+                                  CalendarItemBorderThickness="1"
                                   CalendarItemBackground="Transparent"
                                   OutOfScopeBackground="Transparent"
                                   Background="Transparent"
