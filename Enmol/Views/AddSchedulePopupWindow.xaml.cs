@@ -214,8 +214,15 @@ namespace Enmol.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DismissWindow();
-            LeftClick?.Invoke(this, e);
+            if (DataWriteCompleted())
+            {
+                DismissWindow();
+                LeftClick?.Invoke(this, e);
+            }
+            else
+            {
+                Tools.Dialog.ShowSimpleDialog("警告", "请填写事件名称、检查重复截止日期的合理性");
+            }
         }
 
         //数据合理性检验
@@ -224,7 +231,7 @@ namespace Enmol.Views
             return eventTitleTextBox.Text != ""
                 && endTimeDatePicker.Date > startTimeDatePicker.Date
                 && !(endTimeDatePicker.Date.Year == startTimeDatePicker.Date.Year && endTimeDatePicker.Date.Month == startTimeDatePicker.Date.Month && endTimeDatePicker.Date.Day == startTimeDatePicker.Date.Day && endTimeTimePicker.Time < startTimeTimePicker.Time)
-                && !(repeatAlwaysToggleSwitch.IsOn && repeatEndTimeDatePicker.Date < endTimeDatePicker.Date);
+                && !((repeatToggleSwitch.IsOn && repeatEndTimeDatePicker.Date < endTimeDatePicker.Date));
         }
 
         private void StartTimeDatePicker_DateChanged(object sender, DatePickerValueChangedEventArgs e)

@@ -1103,7 +1103,7 @@
                                     <ColumnDefinition Width="1.5*"/>
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="1" Text="重复" Margin="10" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Grid.Column="1" Text="无限重复" Margin="10" VerticalAlignment="Center" Foreground="White"/>
                                 <ToggleSwitch x:Name="repeatAlwaysToggleSwitch" Toggled="ToggleSwitch_Toggled" Style="{StaticResource ToggleSwitchStyle}" Margin="10,0,10,0" Grid.Column="2" MinWidth="80" Foreground="White" FocusVisualPrimaryBrush="White" HorizontalAlignment="Right"/>
                             </Grid>
                         </ListViewItem>
