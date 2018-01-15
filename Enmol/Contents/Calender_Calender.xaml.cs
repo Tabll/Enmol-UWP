@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace Enmol.Contents
     {
         private bool isRunning = true;
         public static int weekFromNow = 0;
+        private BLL.SQLiteTools mySQLiteTools = new BLL.SQLiteTools();
 
         public Calender_Calender()
         {
@@ -31,6 +33,7 @@ namespace Enmol.Contents
             TimeTextBlock.Text = BLL.TimeTools.GetAllDateTime(DateTime.Now);
             UpdateDate();
             UpdateTime();
+            ReflashEvents();
         }
 
         private void UpdateDate()
@@ -177,6 +180,81 @@ namespace Enmol.Contents
                     break;
             }
             Reflash();
+            ReflashEvents();
+        }
+
+        private List<Schedule> schedulesList;
+
+        private void ReflashEvents()
+        {
+            contentShowGrid.Children.Clear();
+            DateTime dateTime = DateTime.Now.AddDays(-((double)DateTime.Now.DayOfWeek) + (Calender_Calender.weekFromNow * 7));
+            schedulesList = mySQLiteTools.SearchSchedule(dateTime);
+            foreach (var schedule in schedulesList)
+            {
+                Grid newGrid = new Grid
+                {
+                    VerticalAlignment = VerticalAlignment.Top,
+                };
+                TextBlock titleText = new TextBlock();
+                titleText.HorizontalAlignment = HorizontalAlignment.Left;
+                titleText.VerticalAlignment = VerticalAlignment.Top;
+                Thickness titleThickness = new Thickness(20, 10, 0, 0);
+                titleText.Margin = titleThickness;
+                titleText.Foreground = new SolidColorBrush(Colors.White);
+                titleText.Text = schedule.Name;
+
+                TextBlock addressText = new TextBlock();
+                addressText.HorizontalAlignment = HorizontalAlignment.Left;
+                addressText.VerticalAlignment = VerticalAlignment.Top;
+                Thickness addressTextThickness = new Thickness(20, 30, 0, 0);
+                addressText.Margin = addressTextThickness;
+                addressText.Foreground = new SolidColorBrush(Colors.White);
+                addressText.Text = schedule.Address;
+                if (schedule.StartDay == schedule.EndDay)
+                {
+                    newGrid.Height = (schedule.EndHour - schedule.StartHour) * 60 + schedule.EndMinute + 60 - schedule.StartMinute;
+                    Thickness thickness = new Thickness(0, schedule.StartHour * 60 + schedule.StartMinute, 0, 0);
+                    newGrid.Margin = thickness;
+                    Tools.ColorHelpTools colorHelpTools = new Tools.ColorHelpTools();
+                    AcrylicBrush brush = new AcrylicBrush
+                    {
+                        BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                        TintColor = colorHelpTools.ColorHx16toRGB(schedule.Color),
+                        FallbackColor = colorHelpTools.ColorHx16toRGB(schedule.Color),
+                        TintOpacity = 0.8
+                    };
+                    newGrid.Background = brush;
+                    newGrid.Children.Add(titleText);
+                    newGrid.Children.Add(addressText);
+                    contentShowGrid.Children.Add(newGrid);
+
+                    newGrid.SetValue(Grid.ColumnProperty, schedule.StartDay - dateTime.Day + 1);
+                    newGrid.SetValue(Grid.RowSpanProperty, 24);
+                    newGrid.Name = schedule.ID.ToString();
+                    newGrid.Tapped += Grid_Tapped;
+                }
+            }
+            //Tools.Dialog.ShowSimpleDialog("提示", count.ToString());
+        }
+
+        private void Grid_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Grid thisGrid = sender as Grid;
+            Schedule editSchedule = null;
+            foreach (Schedule schedule in schedulesList)
+            {
+                if(schedule.ID.ToString() == thisGrid.Name)
+                {
+                    editSchedule = schedule;
+                }
+            }
+            if (editSchedule != null)
+            {
+                var myPopup = new Views.EditSchedulePopupWindow(editSchedule);
+                //myPopup.LeftClick += MyPopup_LeftClick;
+                myPopup.ShowWIndow();
+            }
         }
     }
 }

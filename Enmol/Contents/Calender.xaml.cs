@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Windows.UI.Xaml.Controls;
@@ -30,7 +31,7 @@ namespace Enmol.Contents
                 switch (args.InvokedItem)
                 {
                     case "添加日程":
-                        var myPopup = new Views.AddSchedulePopupWindow("更改学生详细信息");
+                        var myPopup = new Views.AddSchedulePopupWindow("添加日程");
                         myPopup.LeftClick += MyPopup_LeftClick;
                         myPopup.ShowWIndow();
                         break;
@@ -38,7 +39,7 @@ namespace Enmol.Contents
                         Tools.Dialog.ShowSimpleDialog("Sorry", "功能正在开发中");
                         break;
                     case "计划":
-                        ReflashEvents();
+                        //ReflashEvents();
                         break;
                     default:
                         Tools.Dialog.ShowSimpleDialog("Sorry", "功能正在开发中~");
@@ -49,15 +50,8 @@ namespace Enmol.Contents
 
         private void MyPopup_LeftClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            Tools.Dialog.ShowSimpleDialog("提示", "好的");
-            //throw new NotImplementedException();
-        }
-
-        private void ReflashEvents()
-        {
-            DateTime dateTime = DateTime.Now.AddDays(-((double)DateTime.Now.DayOfWeek) + (Calender_Calender.weekFromNow * 7));
-            int count = mySQLiteTools.SearchSchedule(dateTime);
-            Tools.Dialog.ShowSimpleDialog("提示", count.ToString());
+            Tools.Dialog.ShowSimpleDialog("提示", "已添加");
+            CalenderContentFrame.Navigate(typeof(Calender_Calender));
         }
     }
 }

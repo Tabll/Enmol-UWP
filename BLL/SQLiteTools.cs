@@ -22,10 +22,21 @@ namespace BLL
             mySQLiteTools.Insert(schedule);
         }
 
-        public int SearchSchedule(DateTime fromDateTime)
+        public List<Schedule> SearchSchedule(DateTime fromDateTime)
         {
             List<Schedule> results = mySQLiteTools.GetSchedule(fromDateTime);
-            return results.Count();
+            //
+            return results;
+        }
+
+        public void UpdateSchedule(Schedule schedule)
+        {
+            mySQLiteTools.UpdateSchedule(schedule);
+        }
+
+        public void DeleteSchedule(int scheduleID)
+        {
+            mySQLiteTools.DeleteSchedule(scheduleID);
         }
     }
 }

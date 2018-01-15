@@ -270,6 +270,47 @@
                     <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="21" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
                     <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="22" BorderBrush="#33808080" BorderThickness="0,0.5,0,0.5"/>
                     <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="23" BorderBrush="#33808080" BorderThickness="0,0.5,0,0"/>
+
+
+                    <Grid x:Name="contentShowGrid" Grid.ColumnSpan="9" Grid.RowSpan="24" Height="1440">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                    </Grid>
                 </Grid>
             </ScrollViewer>
             <Grid Grid.Row="3" Background="{ThemeResource SystemControlAccentDark1AcrylicElementAccentDark1Brush}">

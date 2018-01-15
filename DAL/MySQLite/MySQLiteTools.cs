@@ -64,6 +64,12 @@ namespace DAL.MySQLite
                     Type = x.Type,
                     Remark = x.Remark,
                     ShowAs = x.ShowAs,
+                    Secret = x.Secret,
+                    RepeatCount = x.RepeatCount,
+                    RepeatType = x.RepeatType,
+                    RepeatEndYear = x.RepeatEndYear,
+                    RepeatEndMonth = x.RepeatEndMonth,
+                    RepeatEndDay = x.RepeatEndDay,
                 }).ToList();
                 return list;
             }
@@ -96,6 +102,22 @@ namespace DAL.MySQLite
         //        return scheduleList as List<T>;
         //    }
         //}
+
+        public void UpdateSchedule(Schedule schedule)
+        {
+            using (var db = new SQLiteConnection(new SQLitePlatformWinRT(), path))
+            {
+                db.Update(schedule);
+            }
+        }
+
+        public void DeleteSchedule(int scheduleID)
+        {
+            using (var db = new SQLiteConnection(new SQLitePlatformWinRT(), path))
+            {
+                db.Delete<Schedule>(scheduleID);
+            }
+        }
 
         private SQLiteConnection GetConnection()
         {
