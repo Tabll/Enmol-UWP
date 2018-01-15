@@ -15,8 +15,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
-
 namespace Enmol.Contents
 {
     /// <summary>
@@ -25,7 +23,7 @@ namespace Enmol.Contents
     public sealed partial class Calender_Calender : Page
     {
         private bool isRunning = true;
-        private int weekFromNow = 0;
+        public static int weekFromNow = 0;
 
         public Calender_Calender()
         {

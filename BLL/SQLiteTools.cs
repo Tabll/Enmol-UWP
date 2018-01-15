@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Model;
+using SQLite.Net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,10 +17,15 @@ namespace BLL
             mySQLiteTools = new DAL.MySQLite.MySQLiteTools();
         }
 
-        public void Insert(Model.Schedule schedule)
+        public void Insert(Schedule schedule)
         {
             mySQLiteTools.Insert(schedule);
         }
 
+        public int SearchSchedule(DateTime fromDateTime)
+        {
+            List<Schedule> results = mySQLiteTools.GetSchedule(fromDateTime);
+            return results.Count();
+        }
     }
 }

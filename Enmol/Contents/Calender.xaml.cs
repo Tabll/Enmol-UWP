@@ -38,7 +38,7 @@ namespace Enmol.Contents
                         Tools.Dialog.ShowSimpleDialog("Sorry", "功能正在开发中");
                         break;
                     case "计划":
-                        Tools.Dialog.ShowSimpleDialog("Sorry", "功能正在开发中");
+                        ReflashEvents();
                         break;
                     default:
                         Tools.Dialog.ShowSimpleDialog("Sorry", "功能正在开发中~");
@@ -53,6 +53,11 @@ namespace Enmol.Contents
             //throw new NotImplementedException();
         }
 
-        
+        private void ReflashEvents()
+        {
+            DateTime dateTime = DateTime.Now.AddDays(-((double)DateTime.Now.DayOfWeek) + (Calender_Calender.weekFromNow * 7));
+            int count = mySQLiteTools.SearchSchedule(dateTime);
+            Tools.Dialog.ShowSimpleDialog("提示", count.ToString());
+        }
     }
 }
