@@ -108,6 +108,8 @@
   <ItemGroup>
     <Compile Include="HttpsConnect\HttpsConnector.cs" />
     <Compile Include="LocalSettings.cs" />
+    <Compile Include="MySQLite\MySQLiteTools.cs" />
+    <Compile Include="MySQLite\SQLModel\Schedule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\DAL.rd.xml" />
   </ItemGroup>
@@ -124,7 +126,12 @@
       <Name>SQLite for Universal Windows Platform</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{9f218026-d140-44e4-ada7-c87e9062073c}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

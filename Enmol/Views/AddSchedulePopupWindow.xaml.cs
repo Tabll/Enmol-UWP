@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 //https://go.microsoft.com/fwlink/?LinkId=234236 上介绍了“用户控件”项模板
@@ -61,6 +62,8 @@ namespace Enmol.Views
         }
         private void DismissWindow()
         {
+            //PopupAnimation.Fade;
+            //var storyBoard = new Storyboard();
             m_Popup.IsOpen = false;
         }
         private void LeftButton_Click(object sender, RoutedEventArgs e)
