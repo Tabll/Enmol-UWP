@@ -235,6 +235,10 @@
       <Project>{e240b1ba-3c9e-409e-8662-99cda482baec}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{9f218026-d140-44e4-ada7-c87e9062073c}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Style\" />

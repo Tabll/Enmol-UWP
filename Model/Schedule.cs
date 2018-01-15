@@ -1,53 +1,47 @@
-﻿using System;
+﻿using SQLite.Net.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.UI;
 
 namespace Model
 {
     public class Schedule
     {
-        private DateTime startDateTime;//开始时间（年份-分钟）
-        private DateTime endDateTime;//结束时间（年份-分钟）
-        private string scheduleName;//日程的名称
-        private string scheduleAddress;//日程发生的地址
-        private Color scheduleColor;//日程显示的颜色
+        [PrimaryKey]// 主键。
+        [AutoIncrement]// 自动增长
+        public int ID { get; set; }
+        public int StartYear { get; set; }//开始时间（年份-分钟）
+        public int StartMonth { get; set; }
+        public int StartDay { get; set; }
+        public int StartHour { get; set; }
+        public int StartMinute { get; set; }
 
-        private string scheduleType;//日程的形式、分类，如：课程表、日历、计划
-        private string scheduleRemark;//日程的备注
-        private bool scheduleSecret = false;//是否不让对方看见，是否保密
-        private string scheduleShowAs;//在日程发生时显示的状态
+        public int EndYear { get; set; }//结束时间（年份-分钟）
+        public int EndMonth { get; set; }
+        public int EndDay { get; set; }
+        public int EndHour { get; set; }
+        public int EndMinute { get; set; }
 
-        private int repeatType;//1按天、2按周、3按月、4按年、0不重复
-        private int repeatCount;//一周、两周、、
-        private DateTime repeatStartDateTime;
-        private DateTime repeatEndDateTime;
-        
-        public Schedule(DateTime _startDateTime, DateTime _endDateTime, string _scheduleName, string _scheduleAddress, Color _scheduleColor)
-        {
-            startDateTime = _startDateTime;
-            endDateTime = _endDateTime;
-            scheduleName = _scheduleName;
-            scheduleAddress = _scheduleAddress;
-            scheduleColor = _scheduleColor;
-        }
+        public string Name { get; set; }//日程的名称
+        public string Address { get; set; }//日程发生的地址
+        public string Color { get; set; }//日程显示的颜色
+        public string Type { get; set; }//日程的形式、分类，如：课程表、日历、计划
 
-        public void SetScheduleOtherInfo(string _scheduleType, string _scheduleRemark, bool _scheduleSecret, string _scheduleShowAs)
-        {
-            scheduleType = _scheduleType;
-            scheduleRemark = _scheduleRemark;
-            scheduleSecret = _scheduleSecret;
-            scheduleShowAs = _scheduleShowAs;
-        }
+        public string Remark { get; set; }//日程的备注
+        public bool Secret { get; set; }//是否不让对方看见，是否保密
+        public string ShowAs { get; set; }//在日程发生时显示的状态
 
-        public void SetScheduleRepeat(int _repeatType, int _repeatCount, DateTime _repeatStartDateTime, DateTime _repeatEndDateTime)
-        {
-            repeatType = _repeatType;
-            repeatCount = _repeatCount;
-            repeatStartDateTime = _repeatStartDateTime;
-            repeatEndDateTime = _repeatEndDateTime;
-        }
+        public int RepeatType { get; set; }//1按天、2按周、3按月、4按年、0不重复
+        public int RepeatCount { get; set; }//一周、两周、、
+
+        public int RepeatStartYear { get; set; }//重复开始时间（年份-日）
+        public int RepeatStartMonth { get; set; }
+        public int RepeatStartDay { get; set; }
+
+        public int RepeatEndYear { get; set; }//重复结束时间（年份-日）
+        public int RepeatEndMonth { get; set; }
+        public int RepeatEndDay { get; set; }
     }
 }

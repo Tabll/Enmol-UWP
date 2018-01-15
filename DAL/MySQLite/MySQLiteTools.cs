@@ -1,4 +1,4 @@
-﻿using DAL.MySQLite.SQLModel;
+﻿using Model;
 using SQLite.Net;
 using SQLite.Net.Platform.WinRT;
 using System.IO;
@@ -21,9 +21,8 @@ namespace DAL.MySQLite
         {
             using (var db = new SQLiteConnection(new SQLitePlatformWinRT(), path))
             {
-                db.CreateTable<SQLModel.Schedule>();
-                Schedule item = schedule;
-                db.Insert(item);
+                //db.CreateTable<Schedule>();
+                db.Insert(schedule);
             }
         }
 

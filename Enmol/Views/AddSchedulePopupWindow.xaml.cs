@@ -234,6 +234,12 @@ namespace Enmol.Views
                 && !((repeatToggleSwitch.IsOn && repeatEndTimeDatePicker.Date < endTimeDatePicker.Date));
         }
 
+        private void InsertData()
+        {
+            BLL.SQLiteTools mySQLiteTools = new BLL.SQLiteTools();
+
+        }
+
         private void StartTimeDatePicker_DateChanged(object sender, DatePickerValueChangedEventArgs e)
         {
             if(endTimeDatePicker.Date < startTimeDatePicker.Date)

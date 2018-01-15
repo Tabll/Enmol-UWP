@@ -15,5 +15,10 @@ namespace BLL
             mySQLiteTools = new DAL.MySQLite.MySQLiteTools();
         }
 
+        public void Insert(Model.Schedule schedule)
+        {
+            mySQLiteTools.Insert(schedule);
+        }
+
     }
 }
