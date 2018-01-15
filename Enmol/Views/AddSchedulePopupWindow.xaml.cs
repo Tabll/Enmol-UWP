@@ -218,9 +218,13 @@ namespace Enmol.Views
             LeftClick?.Invoke(this, e);
         }
 
+        //数据合理性检验
         private bool DataWriteCompleted()
         {
-            return eventTitleTextBox.Text != "";
+            return eventTitleTextBox.Text != ""
+                && endTimeDatePicker.Date > startTimeDatePicker.Date
+                && !(endTimeDatePicker.Date.Year == startTimeDatePicker.Date.Year && endTimeDatePicker.Date.Month == startTimeDatePicker.Date.Month && endTimeDatePicker.Date.Day == startTimeDatePicker.Date.Day && endTimeTimePicker.Time < startTimeTimePicker.Time)
+                && !(repeatAlwaysToggleSwitch.IsOn && repeatEndTimeDatePicker.Date < endTimeDatePicker.Date);
         }
 
         private void StartTimeDatePicker_DateChanged(object sender, DatePickerValueChangedEventArgs e)
