@@ -128,6 +128,19 @@
                                                                     </ObjectAnimationUsingKeyFrames>
                                                                 </Storyboard>
                                                             </VisualState>
+                                                            <VisualState x:Name="Disabled">
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TimePickerButtonForegroundDisabled}"/>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
                                                         </VisualStateGroup>
                                                         <VisualStateGroup x:Name="FocusStates">
                                                             <VisualState x:Name="Focused">
@@ -978,7 +991,7 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     
-                    <TextBox PlaceholderText="事件标题" Style="{StaticResource NameTextBoxStyle}" Grid.Column="1"/>
+                    <TextBox x:Name="eventTitleTextBox" PlaceholderText="事件标题" Style="{StaticResource NameTextBoxStyle}" Grid.Column="1"/>
 
                     <ListView Grid.Column="1"
                               Grid.Row="1"
@@ -1006,8 +1019,8 @@
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="1" Text="开始时间" Margin="10" VerticalAlignment="Center" Foreground="White"/>
-                                <DatePicker x:Name="startTimeDatePicker" Grid.Column="2" Style="{StaticResource DatePickerStyle}" MinWidth="150" Margin="10,0,10,0" HorizontalAlignment="Stretch" BorderThickness="1" Foreground="White" Background="Transparent"/>
-                                <TimePicker x:Name="startTimeTimePicker" Style="{StaticResource TimePickerStyle}" Grid.Column="3" MinWidth="80" HorizontalAlignment="Stretch" Margin="10,0,10,0" BorderThickness="1"/>
+                                <DatePicker x:Name="startTimeDatePicker" DateChanged="StartTimeDatePicker_DateChanged" Grid.Column="2" Style="{StaticResource DatePickerStyle}" MinWidth="150" Margin="10,0,10,0" HorizontalAlignment="Stretch" BorderThickness="1" Foreground="White" Background="Transparent"/>
+                                <TimePicker x:Name="startTimeTimePicker" TimeChanged="StartTimeTimePicker_TimeChanged" Style="{StaticResource TimePickerStyle}" Grid.Column="3" MinWidth="80" HorizontalAlignment="Stretch" Margin="10,0,10,0" BorderThickness="1"/>
                             </Grid>
                         </ListViewItem>
                         <ListViewItem HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
@@ -1019,8 +1032,8 @@
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="1" Text="结束时间" Margin="10" VerticalAlignment="Center" Foreground="White"/>
-                                <DatePicker x:Name="endTimeDatePicker" Grid.Column="2" Style="{StaticResource DatePickerStyle}" MinWidth="150" Margin="10,0,10,0" HorizontalAlignment="Stretch" BorderThickness="1" Foreground="White" Background="Transparent"/>
-                                <TimePicker x:Name="endTimeTimePicker" Style="{StaticResource TimePickerStyle}" Grid.Column="3" MinWidth="80" HorizontalAlignment="Stretch" Margin="10,0,10,0" BorderThickness="1"/>
+                                <DatePicker x:Name="endTimeDatePicker" DateChanged="EndTimeDatePicker_DateChanged" Grid.Column="2" Style="{StaticResource DatePickerStyle}" MinWidth="150" Margin="10,0,10,0" HorizontalAlignment="Stretch" BorderThickness="1" Foreground="White" Background="Transparent"/>
+                                <TimePicker x:Name="endTimeTimePicker" TimeChanged="EndTimeTimePicker_TimeChanged" Style="{StaticResource TimePickerStyle}" Grid.Column="3" MinWidth="80" HorizontalAlignment="Stretch" Margin="10,0,10,0" BorderThickness="1"/>
                             </Grid>
                         </ListViewItem>
 
@@ -1083,6 +1096,18 @@
                             </Grid>
                         </ListViewItem>
 
+                        <ListViewItem x:Name="repeatAlwaysListViewItem" HorizontalContentAlignment="Stretch" Visibility="Collapsed" VerticalContentAlignment="Stretch">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="1" Text="重复" Margin="10" VerticalAlignment="Center" Foreground="White"/>
+                                <ToggleSwitch x:Name="repeatAlwaysToggleSwitch" Toggled="ToggleSwitch_Toggled" Style="{StaticResource ToggleSwitchStyle}" Margin="10,0,10,0" Grid.Column="2" MinWidth="80" Foreground="White" FocusVisualPrimaryBrush="White" HorizontalAlignment="Right"/>
+                            </Grid>
+                        </ListViewItem>
+
                         <ListViewItem HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -1090,8 +1115,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <SymbolIcon Symbol="Map" Foreground="White"/>
-                                <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" PlaceholderText="编辑发生地点" Margin="10,0,10,0" VerticalAlignment="Center" Foreground="White"/>
-
+                                <TextBox x:Name="addressEditTextBox" Style="{StaticResource TextBoxStyle}" Grid.Column="1" PlaceholderText="编辑发生地点" Margin="10,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                             </Grid>
                         </ListViewItem>
 
@@ -1104,7 +1128,7 @@
                                 </Grid.ColumnDefinitions>
                                 <SymbolIcon Symbol="Tag" Foreground="White"/>
                                 <TextBlock Grid.Column="1" Text="事件类型" Margin="10" VerticalAlignment="Center" Foreground="White"/>
-                                <ComboBox Style="{StaticResource ComboBoxStyle}" SelectedValue="一般事件" Grid.Column="2" BorderThickness="0" Margin="10,0" Background="Transparent" HorizontalContentAlignment="Right" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                <ComboBox x:Name="eventTypeChoiceComboBox" Style="{StaticResource ComboBoxStyle}" SelectedValue="一般事件" Grid.Column="2" BorderThickness="0" Margin="10,0" Background="Transparent" HorizontalContentAlignment="Right" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Stretch">
                                     <x:String>一般事件</x:String>
                                     <x:String>时间轴事件</x:String>
                                 </ComboBox>
@@ -1120,7 +1144,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <SymbolIcon Symbol="Bullets" Foreground="White"/>
-                                <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" PlaceholderText="编辑备注" Margin="10,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBox x:Name="tipsEditTextBox" Style="{StaticResource TextBoxStyle}" Grid.Column="1" PlaceholderText="编辑备注" Margin="10,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                             </Grid>
                         </ListViewItem>
 
@@ -1130,7 +1154,7 @@
                                     <ColumnDefinition Width="40"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" PlaceholderText="设置状态显示信息" Margin="10,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBox x:Name="eventShowInfoEditTextBox" Style="{StaticResource TextBoxStyle}" Grid.Column="1" PlaceholderText="设置状态显示信息" Margin="10,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                             </Grid>
                         </ListViewItem>
 
@@ -1163,8 +1187,7 @@
                         </ListViewItem>
 
 
-                        <ListViewItem HorizontalContentAlignment="Stretch"
-                                      VerticalContentAlignment="Stretch">
+                        <ListViewItem HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40"/>
@@ -1172,13 +1195,12 @@
                                 </Grid.ColumnDefinitions>
                                 <SymbolIcon Symbol="BlockContact" Foreground="White"/>
                                 <TextBlock Grid.Column="1" Text="事件私有" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
-                                <ToggleSwitch Style="{StaticResource ToggleSwitchStyle}" Margin="10,0,10,0" Grid.Column="1" MinWidth="80" Foreground="White" FocusVisualPrimaryBrush="White" HorizontalAlignment="Right"/>
+                                <ToggleSwitch x:Name="isEventSecretToggleSwitch" Style="{StaticResource ToggleSwitchStyle}" Margin="10,0,10,0" Grid.Column="1" MinWidth="80" Foreground="White" FocusVisualPrimaryBrush="White" HorizontalAlignment="Right"/>
                             </Grid>
                         </ListViewItem>
-
                     </ListView>
                     
-                    <Button Style="{StaticResource ButtonRevealStyle}" BorderThickness="1" Content="确认" Width="106" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White"/>
+                    <Button Click="Button_Click" Style="{StaticResource ButtonRevealStyle}" BorderThickness="1" Content="确认" Width="106" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White"/>
                 </Grid>
             </Grid>
         </Grid>

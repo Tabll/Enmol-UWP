@@ -35,7 +35,7 @@ namespace Enmol.Views
             this.Loaded += MessagePopupWindow_Loaded;
             this.Unloaded += MessagePopupWindow_Unloaded;
 
-            //GetInformation();
+            endTimeDatePicker.MinYear = startTimeDatePicker.Date;
         }
 
         public AddSchedulePopupWindow(string showMsg) : this()
@@ -118,11 +118,11 @@ namespace Enmol.Views
                         repeatTypeListViewItem.Visibility = Visibility.Visible;
                         repeatCycleListViewItem.Visibility = Visibility.Visible;
                         repeatUntilListViewItem.Visibility = Visibility.Visible;
+                        repeatAlwaysListViewItem.Visibility = Visibility.Visible;
                         if ($"{repeatTypeComboBox.SelectedValue}" == "")
                         {
                             repeatTypeComboBox.SelectedValue = "按天重复";
                         }
-                        //repeatEndTimeDatePicker.Date = new DateTimeOffset(DateTime.Now.AddDays(1));
                         repeatEndTimeTimePicker.Time = new TimeSpan(23, 59, 59);
                     }
                     else
@@ -130,6 +130,17 @@ namespace Enmol.Views
                         repeatTypeListViewItem.Visibility = Visibility.Collapsed;
                         repeatCycleListViewItem.Visibility = Visibility.Collapsed;
                         repeatUntilListViewItem.Visibility = Visibility.Collapsed;
+                        repeatAlwaysListViewItem.Visibility = Visibility.Collapsed;
+                    }
+                    break;
+                case "repeatAlwaysToggleSwitch":
+                    if (toggleSwitch.IsOn)
+                    {
+                        repeatEndTimeDatePicker.IsEnabled = false;
+                    }
+                    else
+                    {
+                        repeatEndTimeDatePicker.IsEnabled = true;
                     }
                     break;
                 default:
@@ -170,28 +181,81 @@ namespace Enmol.Views
         private void ColorPicker_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
         {
             colorChoiceIcon.Foreground = new SolidColorBrush(sender.Color);
-
-            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.XamlCompositionBrushBase"))
+            AcrylicBrush myBrush = new AcrylicBrush
             {
-                AcrylicBrush myBrush = new AcrylicBrush
-                {
-                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
-                    TintColor = sender.Color,
-                    FallbackColor = sender.Color,
-                    TintOpacity = 0.8
-                };
-                colorChoiceShowRectangle.Fill = myBrush;
-            }
-            else
-            {
-                SolidColorBrush myBrush = new SolidColorBrush(Color.FromArgb(255, 202, 24, 37));
-                colorChoiceShowRectangle.Fill = myBrush;
-            }
+                BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                TintColor = sender.Color,
+                FallbackColor = sender.Color,
+                TintOpacity = 0.8
+            };
+            colorChoiceShowRectangle.Fill = myBrush;
+            //if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.XamlCompositionBrushBase"))
+            //{
+            //    AcrylicBrush myBrush = new AcrylicBrush
+            //    {
+            //        BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+            //        TintColor = sender.Color,
+            //        FallbackColor = sender.Color,
+            //        TintOpacity = 0.8
+            //    };
+            //    colorChoiceShowRectangle.Fill = myBrush;
+            //}
+            //else
+            //{
+            //    SolidColorBrush myBrush = new SolidColorBrush(Color.FromArgb(255, 202, 24, 37));
+            //    colorChoiceShowRectangle.Fill = myBrush;
+            //}
         }
 
         private void ColorRectangle_Tapped(object sender, TappedRoutedEventArgs e)
         {
             FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DismissWindow();
+            LeftClick?.Invoke(this, e);
+        }
+
+        private bool DataWriteCompleted()
+        {
+            return eventTitleTextBox.Text != "";
+        }
+
+        private void StartTimeDatePicker_DateChanged(object sender, DatePickerValueChangedEventArgs e)
+        {
+            if(endTimeDatePicker.Date < startTimeDatePicker.Date)
+            {
+                endTimeDatePicker.Date = startTimeDatePicker.Date;
+            }
+            endTimeDatePicker.MinYear = startTimeDatePicker.Date;
+        }
+
+        private void StartTimeTimePicker_TimeChanged(object sender, TimePickerValueChangedEventArgs e)
+        {
+            if (endTimeDatePicker.Date.Year == startTimeDatePicker.Date.Year && endTimeDatePicker.Date.Month == startTimeDatePicker.Date.Month && endTimeDatePicker.Date.Day == startTimeDatePicker.Date.Day && endTimeTimePicker.Time < startTimeTimePicker.Time)
+            {
+                endTimeTimePicker.Time = startTimeTimePicker.Time;
+            }
+        }
+
+        private void EndTimeDatePicker_DateChanged(object sender, DatePickerValueChangedEventArgs e)
+        {
+            if (endTimeDatePicker.Date < startTimeDatePicker.Date)
+            {
+                endTimeDatePicker.Date = startTimeDatePicker.Date;
+                Tools.Dialog.ShowSimpleDialog("警告", "结束日期小于起始日期，请重新选择");
+            }
+        }
+
+        private void EndTimeTimePicker_TimeChanged(object sender, TimePickerValueChangedEventArgs e)
+        {
+            if (endTimeDatePicker.Date.Year == startTimeDatePicker.Date.Year && endTimeDatePicker.Date.Month == startTimeDatePicker.Date.Month && endTimeDatePicker.Date.Day == startTimeDatePicker.Date.Day && endTimeTimePicker.Time < startTimeTimePicker.Time)
+            {
+                endTimeTimePicker.Time = startTimeTimePicker.Time;
+                Tools.Dialog.ShowSimpleDialog("警告", "结束时间小于起始时间，请重新选择");
+            }
         }
     }
 }

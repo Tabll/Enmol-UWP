@@ -31,6 +31,7 @@ namespace Enmol.Contents
                 {
                     case "添加日程":
                         var myPopup = new Views.AddSchedulePopupWindow("更改学生详细信息");
+                        myPopup.LeftClick += MyPopup_LeftClick;
                         myPopup.ShowWIndow();
                         break;
                     case "时间轴":
@@ -45,5 +46,13 @@ namespace Enmol.Contents
                 }
             }
         }
+
+        private void MyPopup_LeftClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            Tools.Dialog.ShowSimpleDialog("提示", "好的");
+            //throw new NotImplementedException();
+        }
+
+        
     }
 }
