@@ -216,6 +216,7 @@ namespace Enmol.Views
         {
             if (DataWriteCompleted())
             {
+                InsertData();
                 DismissWindow();
                 LeftClick?.Invoke(this, e);
             }
@@ -229,15 +230,84 @@ namespace Enmol.Views
         private bool DataWriteCompleted()
         {
             return eventTitleTextBox.Text != ""
-                && endTimeDatePicker.Date > startTimeDatePicker.Date
-                && !(endTimeDatePicker.Date.Year == startTimeDatePicker.Date.Year && endTimeDatePicker.Date.Month == startTimeDatePicker.Date.Month && endTimeDatePicker.Date.Day == startTimeDatePicker.Date.Day && endTimeTimePicker.Time < startTimeTimePicker.Time)
                 && !((repeatToggleSwitch.IsOn && repeatEndTimeDatePicker.Date < endTimeDatePicker.Date));
+        }
+
+        private int GetRepeatType()
+        {
+            if (repeatToggleSwitch.IsOn)
+            {
+                switch ($"{repeatTypeComboBox.SelectedValue}")
+                {
+                    case "按天重复":
+                        return 1;
+                    case "按周重复":
+                        return 2;
+                    case "按月重复":
+                        return 3;
+                    case "按年重复":
+                        return 4;
+                    default:
+                        return 0;
+                }
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private int GetRepeatCount()
+        {
+            try
+            {
+                return int.Parse(repeatCycleCountTextBlock.Text);
+            }
+            catch (Exception)
+            {
+                return 1;
+            }
+        }
+
+        private int GetRepeatEndYear()
+        {
+            return repeatAlwaysToggleSwitch.IsOn ? 9999 : repeatEndTimeDatePicker.Date.Year;
         }
 
         private void InsertData()
         {
             BLL.SQLiteTools mySQLiteTools = new BLL.SQLiteTools();
+            
+            mySQLiteTools.Insert(new Model.Schedule
+            {
+                Name = eventTitleTextBox.Text,
+                StartYear = startTimeDatePicker.Date.Year,
+                StartMonth = startTimeDatePicker.Date.Month,
+                StartDay = startTimeDatePicker.Date.Day,
+                StartHour = startTimeTimePicker.Time.Hours,
+                StartMinute = startTimeTimePicker.Time.Minutes,
+                EndYear = endTimeDatePicker.Date.Year,
+                EndMonth = endTimeDatePicker.Date.Month,
+                EndDay = endTimeDatePicker.Date.Day,
+                EndHour = endTimeTimePicker.Time.Hours,
+                EndMinute = endTimeTimePicker.Time.Minutes,
 
+                Address = addressEditTextBox.Text,
+                Color = colorChoiceColorPicker.Color.ToString(),
+                Type = $"{eventTypeChoiceComboBox.SelectedValue}",
+                Remark = tipsEditTextBox.Text,
+                Secret = isEventSecretToggleSwitch.IsOn,
+                ShowAs = eventShowInfoEditTextBox.Text,
+
+                RepeatType = GetRepeatType(),
+                RepeatCount = GetRepeatCount(),
+                RepeatStartYear = startTimeDatePicker.Date.Year,
+                RepeatStartMonth = startTimeDatePicker.Date.Month,
+                RepeatStartDay = startTimeDatePicker.Date.Day,
+                RepeatEndYear = GetRepeatEndYear(),
+                RepeatEndMonth = repeatEndTimeDatePicker.Date.Month,
+                RepeatEndDay = repeatEndTimeDatePicker.Date.Day,
+            });
         }
 
         private void StartTimeDatePicker_DateChanged(object sender, DatePickerValueChangedEventArgs e)
